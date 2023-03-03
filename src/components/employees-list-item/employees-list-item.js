@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import './emploees-list-item.css';
+import './employees-list-item.css';
 
-class EmploeesListItem extends Component {
+class EmployeesListItem extends Component {
 
     constructor(props) {
         super(props);
@@ -24,7 +24,7 @@ class EmploeesListItem extends Component {
     }
 
     render() {
-        const {name, salary} = this.props;
+        const {name, salary, onDelete} = this.props;
         const {increase, promotion} = this.state;
 
         return (
@@ -40,7 +40,9 @@ class EmploeesListItem extends Component {
                         <i className="fas fa-cookie-bite"></i>
                     </button>
     
-                    <button type="button" className="btn-trash btn-sm">
+                    <button type="button" 
+                            className="btn-trash btn-sm"
+                            onClick={onDelete}>
                         <i className="fas fa-trash"></i>
                     </button>
                     <i className="fas fa-star"></i>
@@ -50,4 +52,4 @@ class EmploeesListItem extends Component {
     }
 };
 
-export default EmploeesListItem;
+export default EmployeesListItem;
