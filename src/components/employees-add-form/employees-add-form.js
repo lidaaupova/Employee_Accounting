@@ -18,11 +18,15 @@ class EmployeesAddForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+        if (this.state.name.length < 3 || !this.state.salary) {
+            return alert("Вы не написали имя более чем из 2-х символов или забыли указать зарплату!");
+        }
+
         this.props.onAdd(this.state.name, this.state.salary);
-        this.setState({
-            name: '',
-            salary: ''
-        })
+            this.setState({
+                name: '',
+                salary: ''
+            })
     }
     
     render() {
