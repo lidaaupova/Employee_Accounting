@@ -5,7 +5,7 @@ class EmployeesListItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            salary: 0
+            salary: ''
         }
     }
 
@@ -23,7 +23,10 @@ class EmployeesListItem extends Component {
                 <span 
                     onClick={onToggleProp}
                     data-toggle="rise"
-                    className="list-group-item-label">{name}</span>
+                    className="list-group-item-label"
+                    tabIndex="0"
+                    onKeyDown={onToggleProp}>{name}
+                    </span>
                 <input type="text" className="list-group-item-input" defaultValue={salary + '$'} onChange={this.onUpdateSalary}/>
                 <div className="d-flex justify-content-center align-items-center">
                     <button type="button" 

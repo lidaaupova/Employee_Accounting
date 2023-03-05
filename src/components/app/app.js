@@ -55,7 +55,7 @@ class App extends Component {
         })
     }
 
-    onToggleProp = (id, prop) => {
+    onToggleProp = (e, id, prop) => {
         // this.setState(({data}) => {
         //     const index = data.findIndex(elem => elem.id === id);
 
@@ -67,14 +67,16 @@ class App extends Component {
         //         data: newArr
         //     }
         // })
-        this.setState(({data}) => ({
-            data: data.map(item => {
-                if (item.id === id) {
-                    return {...item, [prop]: !item[prop]}
-                }
-                return item;
-            })
-        }))
+        if (e.type === 'click' || e.keyCode === 13 || e.keyCode === 32) {
+            this.setState(({data}) => ({
+                data: data.map(item => {
+                    if (item.id === id) {
+                        return {...item, [prop]: !item[prop]}
+                    }
+                    return item;
+                })
+            }))
+        }
     }
 
     searchEmp = (items, term) => {
