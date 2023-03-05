@@ -13,7 +13,7 @@ class App extends Component {
         super(props)
         this.state = {
             data: [
-                {name: 'John S.', salary: 800, increase: false, rise: true, id: 1},
+                {name: 'John S.', salary: 800, increase: false, rise: false, id: 1},
                 {name: 'Alex M.', salary: 3000, increase: false, rise: false, id: 2},
                 {name: 'Carl W.', salary: 5000, increase: false, rise: false, id: 3}
             ],
@@ -106,6 +106,12 @@ class App extends Component {
         this.setState({filter});
     }
 
+    onUpdateSalary = (name, salary) => {
+        this.setState(({data}) => ({
+            data: data.map(item => item.name === name ? {...item, salary} : item)
+        }))
+    }
+
     render() {
         const {data, term, filter} = this.state;
         const employees = this.state.data.length;
@@ -126,7 +132,8 @@ class App extends Component {
                 <EmployeesList 
                     data={visibleData}
                     onDelete={this.deleteItem}
-                    onToggleProp={this.onToggleProp}/>
+                    onToggleProp={this.onToggleProp}
+                    onUpdateSalary={this.onUpdateSalary}/>
     
                 <EmployeesAddForm
                     onAdd={this.addItem}/>
